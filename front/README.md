@@ -73,3 +73,7 @@ yarn dev
 # quilljs
 
 # loadable components
+
+# storybook & tailwind
+
+https://medium.com/storybookjs/building-a-front-end-project-with-react-tailwindcss-and-storybook-742bdb1417da
