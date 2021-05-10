@@ -1,7 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import GlobalStyle from './styles/GlobalStyle';
+
 import App from './App';
 
-console.log('Hello from tsx!');
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <BrowserRouter>
+    <GlobalStyle />
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root'),
+);
