@@ -1,12 +1,14 @@
 import React from 'react';
-import GlobalStyle from './styles/GlobalStyle';
+import { Route } from 'react-router-dom';
+import Home from './pages/home';
+import Profile from './pages/profile';
+import Write from './pages/write';
 const App = () => {
   return (
     <>
-      <GlobalStyle />
-      <div>
-        <h1>hello world!</h1>
-      </div>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/profile" component={Profile} />
+      <Route exact path="/write" component={Write} />
     </>
   );
 };
