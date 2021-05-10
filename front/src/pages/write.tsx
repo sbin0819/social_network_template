@@ -1,9 +1,10 @@
 import React from 'react';
+import Write from '../components/write';
 
 const index = () => {
   return (
     <div>
-      <h1>write</h1>
+      <Write />
     </div>
   );
 };
