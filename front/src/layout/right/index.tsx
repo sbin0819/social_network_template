@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './rHeader';
 import styled from 'styled-components';
 const Container = styled.div`
   margin: 8px auto;
@@ -7,7 +8,7 @@ const Container = styled.div`
 const right = () => {
   return (
     <Container>
-      <h1>right bar</h1>
+      <Header />
     </Container>
   );
 };

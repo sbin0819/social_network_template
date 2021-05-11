@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import useViewOptions from '../hooks/useViewOptions';
 import Header from './header';
 import LeftBar from './left';
 import RightBar from './right';
@@ -26,8 +27,12 @@ const RightContainer = styled.div`
 
 //userInfo
 const layout = ({ children }) => {
-  const [options, setOptions] = useState({ onLeft: true, onRight: true });
+  const { options, onClick } = useViewOptions();
   const { onLeft, onRight } = options;
+  useEffect(() => {
+    console.log('useEffect');
+  }, [options]);
+  console.log(onLeft);
   return (
     <Container>
       {onLeft && (
