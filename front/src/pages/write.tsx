@@ -2,11 +2,7 @@ import React from 'react';
 import Write from '../components/write';
 
 const index = () => {
-  return (
-    <div>
-      <Write />
-    </div>
-  );
+  return <Write />;
 };
 
 export default index;
