@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './header';
+import LeftBar from './left';
+import RightBar from './right';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -24,14 +26,24 @@ const RightContainer = styled.div`
 
 //userInfo
 const layout = ({ children }) => {
+  const [options, setOptions] = useState({ onLeft: true, onRight: true });
+  const { onLeft, onRight } = options;
   return (
     <Container>
-      <LeftContainer>hi</LeftContainer>
+      {onLeft && (
+        <LeftContainer>
+          <LeftBar />
+        </LeftContainer>
+      )}
       <CenterContainer>
         <Header />
         {children}
       </CenterContainer>
-      <RightContainer></RightContainer>
+      {onRight && (
+        <RightContainer>
+          <RightBar />
+        </RightContainer>
+      )}
     </Container>
   );
 };
