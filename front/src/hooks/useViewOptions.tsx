@@ -7,6 +7,7 @@ const useViewOptions = () => {
     onLeft: true,
     onRight: true,
     rightEvent: true,
+    onChat: false,
   });
 
   React.useEffect(() => {}, [options]);
@@ -29,6 +30,12 @@ const useViewOptions = () => {
     },
     onOpenRightEvent: () => {
       setOptions((state) => ({ ...state, rightEvent: true }));
+    },
+    onCloseChat: () => {
+      setOptions((state) => ({ ...state, onChat: false }));
+    },
+    onOpenChat: () => {
+      setOptions((state) => ({ ...state, onChat: true }));
     },
   };
 
