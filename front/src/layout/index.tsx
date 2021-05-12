@@ -5,9 +5,12 @@ import RightBar from './right';
 
 import { Button } from '../components/common';
 import styled from 'styled-components';
+
+import { FaRegWindowClose } from 'react-icons/fa';
+
 import useViewOptions from '../hooks/useViewOptions';
 import useWindowSize from '../hooks/useWindowSize';
-
+//TODO: media query
 const Container = styled.div`
   display: flex;
   width: 100vw;
@@ -16,7 +19,7 @@ const Container = styled.div`
 
 const LeftContainer = styled.div`
   flex: 0.8 0 0;
-  background: gold;
+  background: #f2f6f9;
 `;
 
 const CenterContainer = styled.div`
@@ -25,7 +28,7 @@ const CenterContainer = styled.div`
 
 const RightContainer = styled.div`
   flex: 1 0 0;
-  background: pink;
+  background: #f2f6f9;
 `;
 
 //userInfo
@@ -43,7 +46,9 @@ const layout = ({ children }) => {
       {onLeft && minSize && (
         <LeftContainer>
           <LeftBar />
-          <Button onClick={() => onClick.onCloseLeftLayout()}>close</Button>
+          <Button onClick={() => onClick.onCloseLeftLayout()}>
+            <FaRegWindowClose />
+          </Button>
         </LeftContainer>
       )}
       <CenterContainer>
@@ -59,7 +64,9 @@ const layout = ({ children }) => {
       {onRight && fullSize && (
         <RightContainer>
           <RightBar />
-          <Button onClick={() => onClick.onCloseRightLayout()}>close</Button>
+          <Button onClick={() => onClick.onCloseRightLayout()}>
+            <FaRegWindowClose />
+          </Button>
         </RightContainer>
       )}
     </Container>
