@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import useViewOptions from '../hooks/useViewOptions';
 import Header from './header';
 import LeftBar from './left';
 import RightBar from './right';
+
+import { Button } from '../components/common';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -29,24 +31,29 @@ const RightContainer = styled.div`
 const layout = ({ children }) => {
   const { options, onClick } = useViewOptions();
   const { onLeft, onRight } = options;
-  useEffect(() => {
-    console.log('useEffect');
-  }, [options]);
-  console.log(onLeft);
+
   return (
     <Container>
       {onLeft && (
         <LeftContainer>
           <LeftBar />
+          <Button onClick={() => onClick.onCloseLeftLayout()}>close</Button>
         </LeftContainer>
       )}
       <CenterContainer>
         <Header />
+        {!onLeft && (
+          <Button onClick={() => onClick.onOpenLeftLayout()}>L-open</Button>
+        )}
+        {!onRight && (
+          <Button onClick={() => onClick.onOpenRightLayout()}>R-open</Button>
+        )}
         {children}
       </CenterContainer>
       {onRight && (
         <RightContainer>
           <RightBar />
+          <Button onClick={() => onClick.onCloseRightLayout()}>close</Button>
         </RightContainer>
       )}
     </Container>

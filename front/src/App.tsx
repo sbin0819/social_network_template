@@ -1,7 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Route } from 'react-router-dom';
 import AppLayout from './layout';
-
 const Home = lazy(() => import('./pages/home'));
 const Like = lazy(() => import('./pages/like'));
 const Chat = lazy(() => import('./pages/chat'));

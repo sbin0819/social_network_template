@@ -9,7 +9,7 @@ import {
   AiOutlineShoppingCart,
 } from 'react-icons/ai';
 import { FaUserFriends } from 'react-icons/fa';
-import useViewOptions from '../hooks/useViewOptions';
+// import useViewOptions from '../hooks/useViewOptions';
 
 const Container = styled.div`
   display: flex;
@@ -36,8 +36,6 @@ const Container = styled.div`
 `;
 
 const header = () => {
-  const { onClick } = useViewOptions();
-
   return (
     <Container>
       <Link to="/" title="홈">
@@ -55,14 +53,7 @@ const header = () => {
       <Link to="/shop" title="쇼핑">
         <AiOutlineShoppingCart />
       </Link>
-      <Link
-        to="/settings"
-        title="세팅"
-        onClick={() => {
-          console.log('click');
-          onClick.onCloseLeftLayout();
-        }}
-      >
+      <Link to="/settings" title="세팅">
         <AiOutlineSetting />
       </Link>
     </Container>

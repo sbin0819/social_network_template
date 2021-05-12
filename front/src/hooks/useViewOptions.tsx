@@ -1,4 +1,5 @@
 //TODO: 화면상에서 일어나는 이벤트 종료, Layout 변경등에 대한 컴포넌트
+//TODO: redux 와 연결시켜주어야 함
 import React, { useState } from 'react';
 
 const useViewOptions = () => {
@@ -12,7 +13,6 @@ const useViewOptions = () => {
 
   const onClick = {
     onCloseLeftLayout: () => {
-      console.log('close');
       setOptions((state) => ({ ...state, onLeft: false }));
     },
     onOpenLeftLayout: () => {
