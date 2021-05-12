@@ -1,8 +1,11 @@
 import React from 'react';
-import Write from '../components/write';
 
 const index = () => {
-  return <Write />;
+  return (
+    <div>
+      <h1>chat</h1>
+    </div>
+  );
 };
 
 export default index;

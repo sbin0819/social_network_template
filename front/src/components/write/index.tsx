@@ -13,6 +13,7 @@ const write = () => {
   const [value, setValue] = useState('');
   return (
     <div>
+      <h1>hello</h1>
       <Container>
         <ReactQuill
           value={value}
