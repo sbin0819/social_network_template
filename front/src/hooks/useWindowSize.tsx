@@ -1,9 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useLayoutEffect, useCallback } from 'react';
 
 /**
  * React hook for detecting window resizing
  */
-export const useWindowSize = () => {
+const useWindowSize = () => {
   const isClient = typeof window === 'object';
 
   const getSize = useCallback(() => {
@@ -15,11 +15,10 @@ export const useWindowSize = () => {
 
   const [windowSize, setWindowSize] = useState(getSize);
 
-  useEffect((): any => {
+  useLayoutEffect((): any => {
     if (!isClient) {
       return false;
     }
-
     function handleResize() {
       setWindowSize(getSize());
     }
@@ -30,3 +29,5 @@ export const useWindowSize = () => {
 
   return windowSize;
 };
+
+export default useWindowSize;

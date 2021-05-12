@@ -9,10 +9,11 @@ import {
   AiOutlineShoppingCart,
 } from 'react-icons/ai';
 import { FaUserFriends } from 'react-icons/fa';
+// import useViewOptions from '../hooks/useViewOptions';
 
 const Container = styled.div`
   display: flex;
-  margin: 6px auto;
+  margin: 8px auto;
   padding: 0 30px;
   font-size: 24px;
   background: #b8d8f6;
@@ -28,28 +29,31 @@ const Container = styled.div`
       background: blue;
       color: gold;
     }
+    :active {
+      display: block;
+    }
   }
 `;
 
 const header = () => {
   return (
     <Container>
-      <Link to="/">
+      <Link to="/" title="홈">
         <BiHome />
       </Link>
-      <Link to="/">
+      <Link to="/like" title="좋아요">
         <AiOutlineHeart />
       </Link>
-      <Link to="/">
+      <Link to="/friends" title="친구">
         <FaUserFriends />
       </Link>
-      <Link to="/">
+      <Link to="/chat" title="채팅">
         <BiChat />
       </Link>
-      <Link to="/">
+      <Link to="/shop" title="쇼핑">
         <AiOutlineShoppingCart />
       </Link>
-      <Link to="/">
+      <Link to="/settings" title="세팅">
         <AiOutlineSetting />
       </Link>
     </Container>
