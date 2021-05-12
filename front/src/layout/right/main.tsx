@@ -7,7 +7,6 @@ const Container = styled.div``;
 const ContenstContainer = styled.div`
   position: relative;
   background: #eee;
-  margin: 0 15px;
   height: 400px;
   border-radius: 24px;
   overflow: hidden;
@@ -38,6 +37,9 @@ const ContenstContainer = styled.div`
     display: flex;
     gap: 4px;
   }
+  @media (max-width: 1280px) {
+    height: 230px;
+  }
 `;
 const BottomContainer = styled.div`
   position: relative;
@@ -54,6 +56,9 @@ const BottomContainer = styled.div`
   .info {
     .info-body {
       font-size: 14px;
+      @media (max-width: 1280px) {
+        display: none;
+      }
     }
   }
   .controller {

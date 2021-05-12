@@ -9,6 +9,9 @@ const Container = styled.button<IStyledProps>`
   height: 50px;
   background: #eee;
   font-size: 20px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 interface IProps {
