@@ -28,7 +28,8 @@ const NotificationContainer = styled.div`
     border-radius: 50%;
   }
   :hover {
-    background: rgba(1, 1, 1, 0.2);
+    opacity: 0.7;
+    cursor: pointer;
   }
 `;
 
@@ -43,6 +44,7 @@ const UserInfoContainer = styled.div`
   }
   :hover {
     background: rgba(1, 1, 1, 0.2);
+    cursor: pointer;
   }
 `;
 
