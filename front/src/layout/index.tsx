@@ -2,14 +2,13 @@ import React from 'react';
 import Header from './header';
 import LeftBar from './left';
 import RightBar from './right';
-
-import { Button } from '../components/common';
-import styled from 'styled-components';
-
-import { FaRegWindowClose } from 'react-icons/fa';
-
+import MiniChatRoom from '../components/chat/miniChatRoom';
 import useViewOptions from '../hooks/useViewOptions';
 import useWindowSize from '../hooks/useWindowSize';
+import { Button } from '../components/common';
+import styled from 'styled-components';
+import { FaRegWindowClose, FaRegPaperPlane } from 'react-icons/fa';
+
 //TODO: media query
 const Container = styled.div`
   display: flex;
@@ -27,14 +26,38 @@ const CenterContainer = styled.div`
 `;
 
 const RightContainer = styled.div`
+  position: relative;
   flex: 1 0 0;
   background: #f2f6f9;
 `;
 
+const ChatContainer = styled.div`
+  position: fixed;
+  bottom: 30px;
+  right: 25px;
+`;
+
+const ChatIconContainer = styled.div`
+  background: #94b9d6;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+  .icon {
+    margin-left: 15px;
+    color: #eee;
+  }
+  :hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.8);
+  }
+`;
 //userInfo
 const layout = ({ children }) => {
   const {
-    options: { onLeft, onRight },
+    options: { onLeft, onRight, onChat },
     onClick,
   } = useViewOptions();
   const { width } = useWindowSize();
@@ -68,6 +91,17 @@ const layout = ({ children }) => {
             <FaRegWindowClose />
           </Button>
         </RightContainer>
+      )}
+      {minSize && (
+        <ChatContainer>
+          {/* TODO: overlay onCloseChat() */}
+          {!onChat && (
+            <ChatIconContainer onClick={() => onClick.onOpenChat()}>
+              <FaRegPaperPlane className="icon" />
+            </ChatIconContainer>
+          )}
+          {onChat && <MiniChatRoom />}
+        </ChatContainer>
       )}
     </Container>
   );
