@@ -44,7 +44,7 @@ const header = () => {
       <Link to="/like" title="좋아요">
         <AiOutlineHeart />
       </Link>
-      <Link to="/" title="친구">
+      <Link to="/friends" title="친구">
         <FaUserFriends />
       </Link>
       <Link to="/chat" title="채팅">

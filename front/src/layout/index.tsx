@@ -1,11 +1,12 @@
 import React from 'react';
-import useViewOptions from '../hooks/useViewOptions';
 import Header from './header';
 import LeftBar from './left';
 import RightBar from './right';
 
 import { Button } from '../components/common';
 import styled from 'styled-components';
+import useViewOptions from '../hooks/useViewOptions';
+import useWindowSize from '../hooks/useWindowSize';
 
 const Container = styled.div`
   display: flex;
@@ -29,12 +30,17 @@ const RightContainer = styled.div`
 
 //userInfo
 const layout = ({ children }) => {
-  const { options, onClick } = useViewOptions();
-  const { onLeft, onRight } = options;
+  const {
+    options: { onLeft, onRight },
+    onClick,
+  } = useViewOptions();
+  const { width } = useWindowSize();
+  const minSize = typeof width === 'number' && width > 700;
+  const fullSize = typeof width === 'number' && width > 900;
 
   return (
     <Container>
-      {onLeft && (
+      {onLeft && minSize && (
         <LeftContainer>
           <LeftBar />
           <Button onClick={() => onClick.onCloseLeftLayout()}>close</Button>
@@ -50,7 +56,7 @@ const layout = ({ children }) => {
         )}
         {children}
       </CenterContainer>
-      {onRight && (
+      {onRight && fullSize && (
         <RightContainer>
           <RightBar />
           <Button onClick={() => onClick.onCloseRightLayout()}>close</Button>
