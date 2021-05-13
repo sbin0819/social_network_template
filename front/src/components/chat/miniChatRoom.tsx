@@ -1,32 +1,74 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Icon } from '../common';
+import { IoCloseSharp } from 'react-icons/io5';
+import { AiOutlinePhone, AiOutlineVideoCamera } from 'react-icons/ai';
 
 const Container = styled.div`
-  width: 400px;
+  width: 350px;
   height: 400px;
-  background: #8a7575;
+  background: #d2e5ee;
+  display: flex;
+  flex-direction: column;
+  .header {
+    height: 50px;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    .controller {
+      font-size: 24px;
+      svg {
+        margin: 0 5px;
+      }
+    }
+  }
+  .content {
+    flex: 1 0 0;
+    border-bottom: 1px solid #fff;
+  }
+  .footer {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+  }
 `;
 
-const ChatIconContainer = styled.div`
-  background: #94b9d6;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+const UserInfoContainer = styled.div`
   display: flex;
   align-items: center;
-  font-size: 40px;
-  .icon {
-    margin-left: 15px;
-    color: #eee;
+  padding: 4px 8px;
+  border-radius: 24px;
+  gap: 6px;
+  .username {
+    font-size: 14px;
   }
   :hover {
+    background: rgba(1, 1, 1, 0.2);
     cursor: pointer;
-    background: rgba(0, 0, 0, 0.8);
   }
 `;
 
 const index = () => {
-  return <Container></Container>;
+  return (
+    <Container>
+      <div className="header">
+        <UserInfoContainer>
+          <Icon size="35" />
+          <div className="username">Subin Park</div>
+        </UserInfoContainer>
+        <div className="controller">
+          <AiOutlineVideoCamera />
+          <AiOutlinePhone />
+          <IoCloseSharp />
+        </div>
+      </div>
+      <div className="content"></div>
+      <div className="footer"></div>
+    </Container>
+  );
 };
 
 export default index;

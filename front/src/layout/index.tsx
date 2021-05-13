@@ -56,6 +56,7 @@ const layout = ({ children }) => {
             </ChatIconContainer>
           )}
           {onChat && <MiniChatRoom />}
+          <MiniChatRoom />
         </ChatContainer>
       )}
     </Container>
