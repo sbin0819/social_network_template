@@ -4,6 +4,9 @@ import { Icon } from '../common';
 import { IoCloseSharp } from 'react-icons/io5';
 import { AiOutlinePhone, AiOutlineVideoCamera } from 'react-icons/ai';
 
+// 실험
+import { range } from '../../utils/helperF';
+
 const Container = styled.div`
   width: 350px;
   height: 400px;
@@ -27,6 +30,7 @@ const Container = styled.div`
   .content {
     flex: 1 0 0;
     border-bottom: 1px solid #fff;
+    overflow: scroll;
   }
   .footer {
     height: 50px;
@@ -65,7 +69,11 @@ const index = () => {
           <IoCloseSharp />
         </div>
       </div>
-      <div className="content"></div>
+      <div className="content">
+        {[...range(0, 10)].map((i) => (
+          <div key={i}>message {i + 1}</div>
+        ))}
+      </div>
       <div className="footer"></div>
     </Container>
   );
