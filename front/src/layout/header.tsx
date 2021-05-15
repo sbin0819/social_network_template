@@ -47,7 +47,7 @@ const header = () => {
       <Link to="/friends" title="친구">
         <FaUserFriends />
       </Link>
-      <Link to="/chat" title="채팅">
+      <Link to="/write" title="채팅">
         <BiChat />
       </Link>
       <Link to="/shop" title="쇼핑">

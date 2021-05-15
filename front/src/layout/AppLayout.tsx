@@ -47,17 +47,6 @@ const layout = ({ children }) => {
           </Button>
         </RightContainer>
       )}
-      {minSize && (
-        <ChatContainer>
-          {!onChat && (
-            <ChatIconContainer onClick={() => onClick.onOpenChat()}>
-              <FaRegPaperPlane className="icon" />
-            </ChatIconContainer>
-          )}
-          {onChat && <MiniChatRoom onClose={onClick.onCloseChat} />}
-        </ChatContainer>
-      )}
-      <MiniChatRoom onClose={onClick.onCloseChat} />
     </Container>
   );
 };
