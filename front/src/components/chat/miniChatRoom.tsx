@@ -4,8 +4,6 @@ import { Icon } from '../common';
 import { IoCloseSharp } from 'react-icons/io5';
 import { AiOutlinePhone, AiOutlineVideoCamera } from 'react-icons/ai';
 
-// 실험
-// import { range } from '../../utils/helperF';
 import faker from 'faker';
 
 const Container = styled.div`
@@ -14,13 +12,6 @@ const Container = styled.div`
   background: #d2e5ee;
   display: flex;
   flex-direction: column;
-
-  .footer {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-  }
 `;
 
 const HeaderContainer = styled.div`
@@ -43,8 +34,7 @@ const HeaderContainer = styled.div`
 
 const ContentContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: column-reverse;
   flex: 1 0 0;
   border-bottom: 1px solid #fff;
   overflow: scroll;
@@ -70,6 +60,13 @@ const ContentContainer = styled.div`
   }
 `;
 
+const FooterContainer = styled.div`
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+`;
+
 const UserInfoContainer = styled.div`
   display: flex;
   align-items: center;
@@ -86,18 +83,19 @@ const UserInfoContainer = styled.div`
 `;
 
 const ChatContainer = styled.div`
-  background: pink;
+  background: #35a7c0;
+  color: white;
   padding: 12px 10px;
   border-radius: 16px;
 `;
 
-// recursive or generator 로 수정가능
-const setMessages = (num) => {
+//TODO recursive or generator 로 수정가능
+const setMessages = (num: number) => {
   const result: any[] = [];
   for (let i = 0; i < num; i++) {
     let type = Math.floor(Math.random() * 2) + 1 === 1 ? 'left' : 'right';
     let username = type === 'left' ? 'anna kim' : 'subin ha';
-    let message;
+    let message: any;
     if (i % 2 === 0) {
       message = faker.lorem.words();
     }
@@ -110,22 +108,40 @@ const setMessages = (num) => {
 };
 
 const FakeMessage = ({ dataList }) => {
-  return dataList.map((item, i) => (
-    <div className={item.type} key={i}>
-      {item.type === 'left' && (
+  return dataList.map(
+    (
+      item: {
+        type: string | undefined;
+        message:
+          | boolean
+          | React.ReactChild
+          | React.ReactFragment
+          | React.ReactPortal
+          | null
+          | undefined;
+      },
+      i: React.Key | null | undefined,
+    ) => (
+      <div className={item.type} key={i}>
+        {item.type === 'left' && (
+          <div>
+            <Icon size="30" />
+          </div>
+        )}
         <div>
-          <Icon size="30" />
+          <ChatContainer>{item.message}</ChatContainer>
         </div>
-      )}
-      <div>
-        <ChatContainer>{item.message}</ChatContainer>
       </div>
-    </div>
-  ));
+    ),
+  );
 };
 
-const index = () => {
-  const fakeMessages = setMessages(2);
+const index = ({ onClose }) => {
+  const fakeMessages = setMessages(8);
+  const handleOnClose = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    onClose();
+  };
   return (
     <Container>
       <HeaderContainer>
@@ -136,13 +152,15 @@ const index = () => {
         <div className="controller">
           <AiOutlineVideoCamera />
           <AiOutlinePhone />
-          <IoCloseSharp />
+          <IoCloseSharp onClick={handleOnClose} />
         </div>
       </HeaderContainer>
       <ContentContainer>
-        <FakeMessage dataList={fakeMessages} />
+        <div>
+          <FakeMessage dataList={fakeMessages} />
+        </div>
       </ContentContainer>
-      <div className="footer"></div>
+      <FooterContainer></FooterContainer>
     </Container>
   );
 };

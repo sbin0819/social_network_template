@@ -47,17 +47,6 @@ const layout = ({ children }) => {
           </Button>
         </RightContainer>
       )}
-      {minSize && (
-        <ChatContainer>
-          {/* TODO: overlay onCloseChat() */}
-          {!onChat && (
-            <ChatIconContainer onClick={() => onClick.onOpenChat()}>
-              <FaRegPaperPlane className="icon" />
-            </ChatIconContainer>
-          )}
-          {onChat && <MiniChatRoom />}
-        </ChatContainer>
-      )}
     </Container>
   );
 };
