@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { AiOutlineUser } from 'react-icons/ai';
 
-const Container = styled.div`
-  width: 40px;
-  height: 40px;
+// sm, md, lg
+const Container = styled.div<{size: string}>`
+  width: ${({ size }) => `${size}px`};
+  height: ${({ size }) => `${size}px`};
   border-radius: 50px;
   display: flex;
   justify-content: center;
@@ -15,9 +16,10 @@ const Container = styled.div`
 
 interface IProps {
   userImg?: any;
+  size?: string;
 }
-const index: React.FC<IProps> = ({ userImg = false }) => {
-  return <Container>{userImg ? 'U' : <AiOutlineUser />}</Container>;
+const index: React.FC<IProps> = ({ userImg = false, size='40' }) => {
+  return <Container size={size}>{userImg ? 'U' : <AiOutlineUser />}</Container>;
 };
 
 export default index;
