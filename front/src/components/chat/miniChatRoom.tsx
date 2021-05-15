@@ -5,7 +5,8 @@ import { IoCloseSharp } from 'react-icons/io5';
 import { AiOutlinePhone, AiOutlineVideoCamera } from 'react-icons/ai';
 
 // 실험
-import { range } from '../../utils/helperF';
+// import { range } from '../../utils/helperF';
+import faker from 'faker';
 
 const Container = styled.div`
   width: 350px;
@@ -13,30 +14,59 @@ const Container = styled.div`
   background: #d2e5ee;
   display: flex;
   flex-direction: column;
-  .header {
-    height: 50px;
-    border-bottom: 1px solid #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
-    .controller {
-      font-size: 24px;
-      svg {
-        margin: 0 5px;
-      }
-    }
-  }
-  .content {
-    flex: 1 0 0;
-    border-bottom: 1px solid #fff;
-    overflow: scroll;
-  }
+
   .footer {
     height: 50px;
     display: flex;
     align-items: center;
     padding: 0 10px;
+  }
+`;
+
+const HeaderContainer = styled.div`
+  height: 50px;
+  border-bottom: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  .controller {
+    font-size: 24px;
+    svg {
+      margin: 0 5px;
+      :hover {
+        cursor: pointer;
+      }
+    }
+  }
+`;
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: 1 0 0;
+  border-bottom: 1px solid #fff;
+  overflow: scroll;
+  padding: 0 12px;
+  .left {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    min-height: 40px;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    max-width: 60%;
+    min-height: 40px;
+    margin-bottom: 12px;
+    div {
+      margin-left: auto;
+    }
   }
 `;
 
@@ -55,10 +85,50 @@ const UserInfoContainer = styled.div`
   }
 `;
 
+const ChatContainer = styled.div`
+  background: pink;
+  padding: 12px 10px;
+  border-radius: 16px;
+`;
+
+// recursive or generator 로 수정가능
+const setMessages = (num) => {
+  const result: any[] = [];
+  for (let i = 0; i < num; i++) {
+    let type = Math.floor(Math.random() * 2) + 1 === 1 ? 'left' : 'right';
+    let username = type === 'left' ? 'anna kim' : 'subin ha';
+    let message;
+    if (i % 2 === 0) {
+      message = faker.lorem.words();
+    }
+    if (i % 2 === 1) {
+      message = faker.lorem.sentence();
+    }
+    result.push({ type, username, message });
+  }
+  return result;
+};
+
+const FakeMessage = ({ dataList }) => {
+  return dataList.map((item, i) => (
+    <div className={item.type} key={i}>
+      {item.type === 'left' && (
+        <div>
+          <Icon size="30" />
+        </div>
+      )}
+      <div>
+        <ChatContainer>{item.message}</ChatContainer>
+      </div>
+    </div>
+  ));
+};
+
 const index = () => {
+  const fakeMessages = setMessages(2);
   return (
     <Container>
-      <div className="header">
+      <HeaderContainer>
         <UserInfoContainer>
           <Icon size="35" />
           <div className="username">Subin Park</div>
@@ -68,12 +138,10 @@ const index = () => {
           <AiOutlinePhone />
           <IoCloseSharp />
         </div>
-      </div>
-      <div className="content">
-        {[...range(0, 10)].map((i) => (
-          <div key={i}>message {i + 1}</div>
-        ))}
-      </div>
+      </HeaderContainer>
+      <ContentContainer>
+        <FakeMessage dataList={fakeMessages} />
+      </ContentContainer>
       <div className="footer"></div>
     </Container>
   );

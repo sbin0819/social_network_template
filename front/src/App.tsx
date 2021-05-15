@@ -16,7 +16,6 @@ const Signup = lazy(() => import('./pages/signup'));
 
 const App = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
   return (
     <>
       {pathname !== '/login' && pathname !== '/signup' && (
