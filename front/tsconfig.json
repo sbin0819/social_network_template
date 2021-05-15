@@ -16,8 +16,8 @@
     "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@common/*": ["./src/components/common/*"]
+      "@/components/*": ["./src/components/*"],
+      "@/common/*": ["./src/components/common/index.tsx"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

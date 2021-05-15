@@ -57,7 +57,6 @@ const layout = ({ children }) => {
           {onChat && <MiniChatRoom onClose={onClick.onCloseChat} />}
         </ChatContainer>
       )}
-      <MiniChatRoom onClose={onClick.onCloseChat} />
     </Container>
   );
 };
