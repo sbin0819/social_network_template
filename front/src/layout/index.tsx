@@ -73,18 +73,25 @@ const Container = styled.div`
 const LeftContainer = styled.div`
   flex: 0.8 0 0;
   background: #f2f6f9;
-`;
-
-const CenterContainer = styled.div`
-  flex: 2 0 0;
+  position: fixed;
+  width: 260px;
+  height: 100vh;
 `;
 
 const RightContainer = styled.div`
-  position: relative;
-  flex: 1 0 0;
+  position: fixed;
   background: #f2f6f9;
+  right: 0;
+  width: 360px;
+  height: 100vh;
 `;
 
+const CenterContainer = styled.div`
+  margin-left: 260px;
+  margin-right: 360px;
+`;
+
+//TODO media-query
 const ChatContainer = styled.div`
   position: fixed;
   bottom: 30px;
