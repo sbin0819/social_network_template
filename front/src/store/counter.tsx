@@ -11,6 +11,7 @@ const initialState: CounterState = {
   value: 0,
 };
 
+//? createSlice 패턴으로 간단하게 처리할 수 있음
 export const counterSlice = createSlice({
   name: 'counter',
   // `createSlice` will infer the state type from the `initialState` argument
@@ -29,9 +30,11 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+const { actions, reducer } = counterSlice;
+
+export const { increment, decrement, incrementByAmount } = actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.counter.value;
 
-export default counterSlice.reducer;
+export default reducer;

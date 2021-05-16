@@ -68,6 +68,7 @@ const Container = styled.div`
   display: flex;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 `;
 
 const LeftContainer = styled.div`
@@ -76,7 +77,9 @@ const LeftContainer = styled.div`
 `;
 
 const CenterContainer = styled.div`
+  position: relative;
   flex: 2 0 0;
+  overflow: scroll;
 `;
 
 const RightContainer = styled.div`
