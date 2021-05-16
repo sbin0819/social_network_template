@@ -7,7 +7,7 @@ import { setDataList } from '../../utils/helperF';
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  gap: 32px;
+  gap: 22px;
 `;
 
 const UserIconContainer = styled.div`
@@ -18,7 +18,7 @@ const UserIconContainer = styled.div`
 `;
 
 const index = () => {
-  const userList = setDataList(faker.internet, 7);
+  const userList = setDataList(faker.internet, 8);
   return (
     <Container>
       {userList.map((d, i) => (
