@@ -68,30 +68,26 @@ const Container = styled.div`
   display: flex;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 `;
 
 const LeftContainer = styled.div`
   flex: 0.8 0 0;
   background: #f2f6f9;
-  position: fixed;
-  width: 260px;
-  height: 100vh;
-`;
-
-const RightContainer = styled.div`
-  position: fixed;
-  background: #f2f6f9;
-  right: 0;
-  width: 360px;
-  height: 100vh;
 `;
 
 const CenterContainer = styled.div`
-  margin-left: 260px;
-  margin-right: 360px;
+  position: relative;
+  flex: 2 0 0;
+  overflow: scroll;
 `;
 
-//TODO media-query
+const RightContainer = styled.div`
+  position: relative;
+  flex: 1 0 0;
+  background: #f2f6f9;
+`;
+
 const ChatContainer = styled.div`
   position: fixed;
   bottom: 30px;
