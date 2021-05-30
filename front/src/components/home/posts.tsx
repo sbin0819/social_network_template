@@ -11,7 +11,7 @@ const Container = styled.div`
   margin-top: 40px;
 `;
 
-// sm, md, lg
+//TODO 사이즈 sm, md, lg
 const PostContainer = styled.div`
   display: flex;
   border: 2px solid #eee;
