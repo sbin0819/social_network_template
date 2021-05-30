@@ -91,35 +91,34 @@ const InfoContainer = styled.div`
   }
 `;
 
-const Post = () => {
+const Post: React.FC<{ post: any }> = ({ post }) => {
   return (
     <PostContainer>
       <div className="img">
-        <img src="http://placeimg.com/640/480/nature" />
+        <img src={post.image.image()} />
       </div>
       <InfoContainer>
         <div className="header">
           <div className="date">
-            <div className="date_top">MAY</div>
+            <div className="date_top">{post.date.month().slice(0, 3)}</div>
             <div className="date_bottom">08</div>
           </div>
           <div className="title">
             <div className="title_main">
-              How To Manage Your Time & Get More Done
+              {post.lorem.sentence().slice(0, 35)}
             </div>
             <div className="title_sub">Thu 10:00 - Zoom Meeting</div>
           </div>
         </div>
         <div className="body">
-          It may not be possible to squeeze more time in the day without
-          sacrificing sleep. So how to you achieve
+          {post.lorem.sentences().slice(0, 100) + '...'}
         </div>
         <div className="footer">
           <div className="footer_left">
-            <Icon size="50" />
+            <Icon size="50" userImg={post.internet.avatar()} />
             <div>
-              <div>Alva Lousia</div>
-              <div>Product Manager</div>
+              <div>{post.internet.userName().slice(0, 8)}</div>
+              <div>{post.name.jobTitle().split(' ')[1]}</div>
             </div>
           </div>
           <div className="footer_right">
@@ -139,12 +138,13 @@ const Post = () => {
 };
 
 const index = () => {
-  // const img = faker.random.image();
+  const postList = setDataList(faker, 5);
+
   return (
     <Container>
-      {[1, 2, 3].map((i) => (
+      {postList.map((el, i) => (
         <div key={i}>
-          <Post />
+          <Post post={el} />
         </div>
       ))}
     </Container>
