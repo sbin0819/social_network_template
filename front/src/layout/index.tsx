@@ -3,18 +3,18 @@ import Header from './header';
 import LeftBar from './left';
 import RightBar from './right';
 import MiniChatRoom from '../components/chat/miniChatRoom';
-import useViewOptions from '../hooks/useViewOptions';
 import useWindowSize from '../hooks/useWindowSize';
 import { Button } from '../components/common';
 import styled from 'styled-components';
 import { FaRegWindowClose, FaRegPaperPlane } from 'react-icons/fa';
 
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { actions } from '../store/slice/option';
+
 //userInfo
 const layout = ({ children }) => {
-  const {
-    options: { onLeft, onRight, onChat },
-    onClick,
-  } = useViewOptions();
+  const { onLeft, onRight, onChat } = useAppSelector(({ option }) => option);
+  const dispatch = useAppDispatch();
   const { width } = useWindowSize();
   const minSize = typeof width === 'number' && width > 700;
   const fullSize = typeof width === 'number' && width > 900;
@@ -24,7 +24,12 @@ const layout = ({ children }) => {
       {onLeft && minSize && (
         <LeftContainer>
           <LeftBar />
-          <Button onClick={() => onClick.onCloseLeftLayout()}>
+          <Button
+            onClick={() => {
+              // onClick.onCloseLeftLayout();
+              dispatch(actions.onCloseLeftLayout());
+            }}
+          >
             <FaRegWindowClose />
           </Button>
         </LeftContainer>
@@ -32,17 +37,21 @@ const layout = ({ children }) => {
       <CenterContainer>
         <Header />
         {!onLeft && (
-          <Button onClick={() => onClick.onOpenLeftLayout()}>L-open</Button>
+          <Button onClick={() => dispatch(actions.onOpenLeftLayout())}>
+            L-open
+          </Button>
         )}
         {!onRight && (
-          <Button onClick={() => onClick.onOpenRightLayout()}>R-open</Button>
+          <Button onClick={() => dispatch(actions.onOpenRightLayout())}>
+            R-open
+          </Button>
         )}
         {children}
       </CenterContainer>
       {onRight && fullSize && (
         <RightContainer>
           <RightBar />
-          <Button onClick={() => onClick.onCloseRightLayout()}>
+          <Button onClick={() => dispatch(actions.onCloseRightLayout())}>
             <FaRegWindowClose />
           </Button>
         </RightContainer>
@@ -50,11 +59,13 @@ const layout = ({ children }) => {
       {minSize && (
         <ChatContainer>
           {!onChat && (
-            <ChatIconContainer onClick={() => onClick.onOpenChat()}>
+            <ChatIconContainer onClick={() => dispatch(actions.onOpenChat())}>
               <FaRegPaperPlane className="icon" />
             </ChatIconContainer>
           )}
-          {onChat && <MiniChatRoom onClose={onClick.onCloseChat} />}
+          {onChat && (
+            <MiniChatRoom onClose={() => dispatch(actions.onCloseChat())} />
+          )}
         </ChatContainer>
       )}
     </Container>
