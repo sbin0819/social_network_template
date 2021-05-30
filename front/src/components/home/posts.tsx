@@ -11,12 +11,13 @@ const Container = styled.div`
   margin-top: 40px;
 `;
 
+// sm, md, lg
 const PostContainer = styled.div`
   display: flex;
   border: 2px solid #eee;
   border-radius: 12px;
   height: 310px;
-  width: 90%;
+  width: 650px;
   margin: 18px auto;
   .img {
     flex: 1.5 0 0;
@@ -71,7 +72,6 @@ const InfoContainer = styled.div`
     line-height: normal;
     border-bottom: 2px dashed #999;
   }
-
   .footer {
     margin-top: 35px;
     display: flex;
@@ -139,7 +139,6 @@ const Post: React.FC<{ post: any }> = ({ post }) => {
 
 const index = () => {
   const postList = setDataList(faker, 5);
-
   return (
     <Container>
       {postList.map((el, i) => (
