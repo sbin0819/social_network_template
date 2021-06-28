@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "dev": "parcel ./front/public/index.html",
+    "build": "parcel build ./public/index.html",
+    "server": "nodemon --exec ts-node ./back/index.ts"
+  },
+  "browserslist": [
+    "since 2017-06"
+  ],
+  "dependencies": {
+    "nodemon": "^2.0.7",
+    "parcel-bundler": "^1.12.5",
+    "ts-node": "^10.0.0"
+  }
+}
